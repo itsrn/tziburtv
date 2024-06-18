@@ -1,113 +1,103 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import { VideoPlayer } from "./components/VideoPlayer";
+
+const LiveChannels = [
+  {
+    channelName: "כאן 11",
+    m3u8Source:
+      "https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8",
+  },
+  {
+    channelName: "ערוץ 13",
+    m3u8Source:
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
+  },
+  {
+    channelName: "עכשיו 14",
+    m3u8Source:
+      "https://now14.g-mana.live/media/91517161-44ab-4e46-af70-e9fe26117d2e/mainManifest.m3u8",
+  },
+  {
+    channelName: "רלוונט",
+    m3u8Source:
+      "https://6180c994cb835402.mediapackage.eu-west-1.amazonaws.com/out/v1/f1339272dd24416ca60b00e69075d783/index.m3u8",
+  },
+  {
+    channelName: "הידברות",
+    m3u8Source: "https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8",
+  },
+  {
+    channelName: "ערוץ הכנסת",
+    m3u8Source: "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
+  },
+  {
+    channelName: "כאן חינוכית",
+    m3u8Source:
+      "https://kan23.media.kan.org.il/hls/live/2024691/2024691/master.m3u8",
+  },
+  {
+    channelName: "ערוץ הקניות",
+    m3u8Source: "https://shoppingil-rewriter.vidnt.com/index.m3u8",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main
+      className="flex min-h-screen flex-col md:p-14 p-8 bg-black/90 text-white/90"
+      dir="rtl"
+    >
+      <header className="flex w-full">
+        <nav className="mx-5 w-full flex flex-row justify-between">
+          <div>
+            <h2 className="text-2xl font-bold">ציבורTV</h2>
+            <h4 className="text-lg font-medium max-w-lg">
+              האתר מאגד בדף אחד את כל ערוצי הטלוויזיה הזמינים לצפייה באופן חוקי
+              ובחינם באינטרנט.{" "}
+              <a className="cursor-help" href="https://ron.is-a.dev">
+                אני
+              </a>{" "}
+              משתדל לעדכן את הערוצים שלא עובדים במידת הצורך.
+            </h4>
+          </div>
+          <div className="hidden items-baseline md:flex md:flex-col">
+            <h5 className="font-light">© נוצר על ידי רון נוס</h5>
+            <h5 className="font-light">
+              האתר זמין גם{" "}
+              <a className="underline" href="https://github.com/itsrn/tziburtv">
+                בקוד פתוח
+              </a>
+            </h5>
+          </div>
+        </nav>
+      </header>
+      <div className="container mx-auto p-4 mb-10 md:mb-0">
+        <div className="flex flex-wrap items-center -mx-2">
+          {LiveChannels.map((item, index) => (
+            <div key={index} className="w-full md:w-1/3 p-2">
+              <div className="rounded">
+                <VideoPlayer src={item.m3u8Source} title={item.channelName} />
+                <h4 className="text-sm md:text-base text-white/80 font-light">
+                  {item.channelName}
+                </h4>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <footer className="flex md:hidden">
+        <div className="flex flex-col">
+          <h5 className="font-light">© נוצר על ידי רון נוס</h5>
+          <h5 className="font-light">
+            האתר זמין גם{" "}
+            <a className="underline" href="https://github.com/itsrn/tziburtv">
+              בקוד פתוח
+            </a>
+          </h5>
+        </div>
+      </footer>
     </main>
   );
 }
