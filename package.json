@@ -11,7 +11,7 @@
   "dependencies": {
     "@vidstack/react": "^1.11.22",
     "hls.js": "^1.5.11",
-    "next": "14.2.4",
+    "next": "14.2.10",
     "react": "^18",
     "react-dom": "^18"
   },
