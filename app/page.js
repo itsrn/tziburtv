@@ -17,7 +17,7 @@ const LiveChannels = [
   {
     channelName: "עכשיו 14",
     m3u8Source:
-      "https://now14.g-mana.live/media/91517161-44ab-4e46-af70-e9fe26117d2e/mainManifest.m3u8",
+      "https://ch14-channel14-content.akamaized.net/hls/live/2104807-b/CH14_CHANNEL14/0/streamPlaylist.m3u8",
   },
   {
     channelName: "רלוונט",
